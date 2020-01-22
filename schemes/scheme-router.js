@@ -104,7 +104,7 @@ router.delete('/:id', (req, res) => {
   Schemes.remove(id)
   .then(deleted => {
     if (deleted) {
-      res.json({ removed: deleted });
+      res.json({ id: deleted });
     } else {
       res.status(404).json({ message: 'Could not find scheme with given id' });
     }
