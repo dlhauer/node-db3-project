@@ -56,10 +56,13 @@ function update(changes, id) {
 }
 
 function remove(id) {
-  return db('schemes')
-          .where({ id })
-          .del()
-          .then(() => {
-            return id;
+  return findById(id)
+          .then(scheme => {
+            return db('schemes')
+                    .where({ id })
+                    .del()
+                    .then(() => {
+                      return scheme;
+                    })
           })
 }
